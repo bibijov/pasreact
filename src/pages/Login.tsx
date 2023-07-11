@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/login.scss";
 import {
   getAuth,
@@ -8,6 +8,7 @@ import {
 import { redirect, useNavigate } from "react-router-dom";
 // import axios from "../utils/axios";
 import axios from "axios";
+import { AppContext } from "../functions/AppProvider";
 
 interface Props {}
 axios.defaults.headers.common["X-CSRF-TOKEN"] = document
@@ -19,7 +20,7 @@ export function Login(props: Props) {
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   // const auth = getAuth();
-  const [currentUser, setCurrentUser] = useState();
+  // const [currentUser, setCurrentUser] = useState();
   // const createAccount = () => {
   //   createUserWithEmailAndPassword(auth, email, password)
   //     .then((userCredential) => {
@@ -49,7 +50,7 @@ export function Login(props: Props) {
   //       console.log(error);
   //     });
   // };
-
+  const { setCurrentUser } = useContext(AppContext);
   const handleLogin = async () => {
     // event.preventDefault();
 
@@ -62,6 +63,7 @@ export function Login(props: Props) {
         .then((response) => {
           console.log(response.data);
           setCurrentUser(response.data);
+          localStorage.setItem("korisnik", JSON.stringify(response.data));
         });
       setEmail("");
       setPassword("");

@@ -121,7 +121,7 @@ export function HomeST(props: Props) {
   return (
     <>
       <div className="welcome">
-        <h2>Dobro došli, {currentUserData && currentUserData?.role}</h2>
+        <h2>Dobro došli, {currentUserData && currentUserData?.uloga}</h2>
         <h2>
           {date.getDate()}.{mesec}.{date.getFullYear()}
         </h2>

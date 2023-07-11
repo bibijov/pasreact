@@ -1,0 +1,16 @@
+.schoolTab {
+  background-color: #334155;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  border: 2px solid white;
+  border-radius: 10px;
+
+  margin: 10px;
+  p {
+    color: white;
+  }
+}

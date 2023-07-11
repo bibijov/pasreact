@@ -19,36 +19,36 @@ export function NewSSOverlay(props: Props) {
   const auth = getAuth();
   const { currentUserData } = useContext(AppContext);
   useEffect(() => {
-    getDoc(doc(skoleRef, currentUserData.skola)).then((skolica) => {
-      setSkola(skolica.data() as autoSkola);
-    });
+    // getDoc(doc(skoleRef, currentUserData.skola)).then((skolica) => {
+    //   setSkola(skolica.data() as autoSkola);
+    // });
   }, []);
   const dodajNovogStudenta = async () => {
     if (skola === null) return;
 
-    createUserWithEmailAndPassword(auth, email, "123456")
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        const userData: UserData = {
-          email: user.email as string,
-          uid: user.uid,
-          role: "student",
-          displayName: "",
-          skola: currentUserData.skola,
-          brOdvozanihCasova: brOdC,
-          polozioTeoriju: polozioT === "da" ? true : false,
-        };
-        await setDoc(doc(korisniciRef, user.uid), userData).then(async () => {
-          setEmail("");
-          setIsNewSS(false);
-          await updateDoc(doc(skoleRef, currentUserData.skola), {
-            studenti: arrayUnion(userData),
-          });
-        });
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    // createUserWithEmailAndPassword(auth, email, "123456")
+    //   .then(async (userCredential) => {
+    //     const user = userCredential.user;
+    //     const userData: UserData = {
+    //       email: user.email as string,
+    //       uid: user.uid,
+    //       role: "student",
+    //       displayName: "",
+    //       skola: currentUserData.skola,
+    //       brOdvozanihCasova: brOdC,
+    //       polozioTeoriju: polozioT === "da" ? true : false,
+    //     };
+    //     await setDoc(doc(korisniciRef, user.uid), userData).then(async () => {
+    //       setEmail("");
+    //       setIsNewSS(false);
+    //       await updateDoc(doc(skoleRef, currentUserData.skola), {
+    //         studenti: arrayUnion(userData),
+    //       });
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
   };
   return (
     <div className="newSTOverlay">

@@ -18,34 +18,34 @@ export function NewSTOverlay(props: Props) {
   const { currentUserData } = useContext(AppContext);
 
   useEffect(() => {
-    getDoc(doc(skoleRef, currentUserData.skola)).then((skolica) => {
-      setSkola(skolica.data() as autoSkola);
-    });
+    // getDoc(doc(skoleRef, currentUserData.skola)).then((skolica) => {
+    //   setSkola(skolica.data() as autoSkola);
+    // });
   }, []);
 
   const dodajNovogPredavaca = async () => {
     if (skola === null) return;
-    createUserWithEmailAndPassword(auth, email, "123456")
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        const userData: UserData = {
-          email: user.email as string,
-          uid: user.uid,
-          role: "schoolteacher",
-          displayName: "",
-          skola: currentUserData.skola,
-        };
-        await setDoc(doc(korisniciRef, user.uid), userData).then(async () => {
-          setEmail("");
-          setIsNewST(false);
-          await updateDoc(doc(skoleRef, currentUserData.skola), {
-            predavaci: arrayUnion(userData),
-          });
-        });
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    // createUserWithEmailAndPassword(auth, email, "123456")
+    //   .then(async (userCredential) => {
+    //     const user = userCredential.user;
+    //     const userData: UserData = {
+    //       email: user.email as string,
+    //       uid: user.uid,
+    //       role: "schoolteacher",
+    //       displayName: "",
+    //       skola: currentUserData.skola,
+    //     };
+    //     await setDoc(doc(korisniciRef, user.uid), userData).then(async () => {
+    //       setEmail("");
+    //       setIsNewST(false);
+    //       await updateDoc(doc(skoleRef, currentUserData.skola), {
+    //         predavaci: arrayUnion(userData),
+    //       });
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
   };
   return (
     <div className="newSTOverlay">

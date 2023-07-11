@@ -1,7 +1,8 @@
 export type autoSkola = {
   ime: string;
-  emailAdmina: string;
-  predavaci: Array<UserData>;
+  adresa: string;
+  brojtelefona: Array<UserData>;
+  id: number;
 };
 export type UserRole =
   | "schooladmin"
@@ -10,12 +11,13 @@ export type UserRole =
   | "schoolteacher"
   | "student";
 export interface UserData {
-  uid: string;
-  displayName: string;
+  id: number;
+  ime: string;
   email: string;
-  role: UserRole;
-  skola: string;
-  polozioTeoriju?: boolean;
-  brOdvozanihCasova?: number;
-  voziAuto?: string;
+  uloga: UserRole;
+  autoskola_id: number;
+  profilnaURL: string;
+  // polozioTeoriju?: boolean;
+  // brOdvozanihCasova?: number;
+  // voziAuto?: string;
 }

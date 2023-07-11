@@ -30,6 +30,7 @@ function App() {
   function posalji() {
     handleSubmit(probni);
   }
+  console.log("USER ROLE", currentUserData);
   return (
     <Router>
       <div className="app">
@@ -40,15 +41,15 @@ function App() {
             element={
               currentUser === null ? (
                 <Navigate to={{ pathname: "/" }} />
-              ) : currentUserData.role === "schooladmin" ? (
+              ) : currentUser?.uloga === "schooladmin" ? (
                 <HomeSA />
-              ) : currentUserData.role === "schoolinstructor" ? (
+              ) : currentUser?.uloga === "schoolinstructor" ? (
                 <HomeSI />
-              ) : currentUserData.role === "schoolteacher" ? (
+              ) : currentUser?.uloga === "schoolteacher" ? (
                 <HomeST />
-              ) : currentUserData.role === "student" ? (
+              ) : currentUser?.uloga === "student" ? (
                 <HomeSS />
-              ) : currentUserData.role === "globaladmin" ? (
+              ) : currentUser?.uloga === "globaladmin" ? (
                 <Home />
               ) : (
                 <p>User doesn't have a role</p>

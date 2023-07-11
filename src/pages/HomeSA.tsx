@@ -9,6 +9,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { NewSTOverlay } from "../components/NewSTOverlay";
 import { NewSSOverlay } from "../components/NewSSOverlay";
 import { NewSIOverlay } from "../components/NewSIOverlay";
+import { redirect, useNavigate } from "react-router-dom";
 
 interface Props {}
 
@@ -16,21 +17,27 @@ export function HomeSA(props: Props) {
   const [isNewST, setIsNewST] = useState<boolean>(false);
   const [isNewSI, setIsNewSI] = useState<boolean>(false);
   const [isNewSS, setIsNewSS] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   const date = new Date();
   const mesec = date.getMonth() + 1;
-  const { currentUser, currentUserData } = useContext(AppContext);
+  const { currentUser, logOut } = useContext(AppContext);
 
   return (
     <>
       <div className="welcome">
-        <h2>Dobro došli, {currentUserData && currentUserData?.role}</h2>
+        <h2>Dobro došli, {currentUser && currentUser?.ime}</h2>
         <h2>
           {date.getDate()}.{mesec}.{date.getFullYear()}
         </h2>
       </div>
       <div className="optionsContainer">
-        <div className="option" onClick={() => izloguj()}>
+        <div
+          className="option"
+          onClick={() => {
+            logOut();
+            navigate("/");
+          }}
+        >
           <BiLogOutCircle color="white" size={100} />
           <h3>Izlogujte se</h3>
         </div>
