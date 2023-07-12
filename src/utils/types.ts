@@ -4,6 +4,20 @@ export type autoSkola = {
   brojtelefona: Array<UserData>;
   id: number;
 };
+export type Upit = {
+  id: number;
+  korisnik_id: number;
+  instruktor_id: number;
+  datum: string;
+  vreme: string;
+  stanje: string;
+};
+export type Instruktor = {
+  ime: string;
+  id: number;
+  korisnik_id: number;
+  auto: string;
+};
 export type UserRole =
   | "schooladmin"
   | "globaladmin"

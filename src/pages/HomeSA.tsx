@@ -5,7 +5,7 @@ import { izloguj } from "../utils/firebase";
 import { BiLogOutCircle } from "react-icons/bi";
 import { GiTeacher } from "react-icons/gi";
 import { MdOutlineDriveEta } from "react-icons/md";
-import { BsFillPersonPlusFill } from "react-icons/bs";
+import { BsFillPersonPlusFill, BsPeopleFill } from "react-icons/bs";
 import { NewSTOverlay } from "../components/NewSTOverlay";
 import { NewSSOverlay } from "../components/NewSSOverlay";
 import { NewSIOverlay } from "../components/NewSIOverlay";
@@ -52,6 +52,10 @@ export function HomeSA(props: Props) {
         <div className="option" onClick={() => setIsNewSS(true)}>
           <BsFillPersonPlusFill color="white" size={100} />
           <h3>Dodajte novog učenika</h3>
+        </div>
+        <div className="option" onClick={() => navigate(`/random`)}>
+          <BsPeopleFill color="white" size={100} />
+          <h3>Random ljudi </h3>
         </div>
       </div>
       {isNewST && <NewSTOverlay setIsNewST={setIsNewST} />}

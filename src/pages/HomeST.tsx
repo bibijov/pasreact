@@ -3,7 +3,7 @@ import "../styles/home.scss";
 import { izloguj } from "../utils/firebase";
 import { BiLogOutCircle } from "react-icons/bi";
 import { GiBookshelf } from "react-icons/gi";
-import { BsFillPersonPlusFill } from "react-icons/bs";
+import { BsFillPersonPlusFill, BsPeopleFill } from "react-icons/bs";
 import { NewSSOverlay } from "../components/NewSSOverlay";
 import { AppContext } from "../functions/AppProvider";
 import { NewQuizOverlay } from "../components/NewQuizOverlay";
@@ -116,7 +116,7 @@ export function HomeST(props: Props) {
   const date = new Date();
   const mesec = date.getMonth() + 1;
   const navigate = useNavigate();
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, logOut } = useContext(AppContext);
 
   return (
     <>
@@ -127,7 +127,13 @@ export function HomeST(props: Props) {
         </h2>
       </div>
       <div className="optionsContainer">
-        <div className="option" onClick={() => izloguj()}>
+        <div
+          className="option"
+          onClick={() => {
+            logOut();
+            navigate("/");
+          }}
+        >
           <BiLogOutCircle color="white" size={100} />
           <h3>Izlogujte se</h3>
         </div>
@@ -142,6 +148,10 @@ export function HomeST(props: Props) {
         <div className="option" onClick={() => navigate("/allQuizs")}>
           <GiBookshelf color="white" size={100} />
           <h3>Svi kvizovi</h3>
+        </div>
+        <div className="option" onClick={() => navigate(`/random`)}>
+          <BsPeopleFill color="white" size={100} />
+          <h3>Random ljudi </h3>
         </div>
       </div>
       {isNewSS && <NewSSOverlay setIsNewSS={setIsNewSS} />}

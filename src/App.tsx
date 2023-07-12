@@ -22,6 +22,8 @@ import "./styles/app.scss";
 import NewQuiz from "./pages/NewQuiz";
 import QuizList from "./pages/QuizList";
 import QuizPage from "./pages/Quiz";
+import UpitList from "./pages/UpitList";
+import RandomList from "./pages/RandomList";
 
 function App() {
   const [probni, setProbni] = useState<String>("");
@@ -94,6 +96,26 @@ function App() {
             element={
               currentUser !== null ? (
                 <QuizPage />
+              ) : (
+                <Navigate to={{ pathname: "/" }} />
+              )
+            }
+          />
+          <Route
+            path="/allUpits/:korisnikID"
+            element={
+              currentUser !== null ? (
+                <UpitList />
+              ) : (
+                <Navigate to={{ pathname: "/" }} />
+              )
+            }
+          />
+          <Route
+            path="/random"
+            element={
+              currentUser !== null ? (
+                <RandomList />
               ) : (
                 <Navigate to={{ pathname: "/" }} />
               )

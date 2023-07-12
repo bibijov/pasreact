@@ -1,0 +1,40 @@
+.upitBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #334155;
+
+  padding: 15px;
+  margin: 20px;
+
+  p {
+    color: white;
+  }
+
+  .upitOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    button {
+      background-image: linear-gradient(to right, #2664eb, #588ef3);
+      border-radius: 10px;
+      color: white;
+      border: none;
+      outline: none;
+      padding: 15px;
+      font-size: 20px;
+      margin-right: 20px;
+      margin-left: 20px;
+      cursor: pointer;
+      &:hover {
+        scale: 1.05;
+        background-image: linear-gradient(to left, #2664eb, #588ef3);
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { autoSkola } from "../utils/types";
 import { NewUserOverlay } from "../components/NewUserOverlay";
+import { BiLogOutCircle } from "react-icons/bi";
 interface Props {}
 
 export function Home(props: Props) {
@@ -55,6 +56,7 @@ export function Home(props: Props) {
             navigate("/");
           }}
         >
+          <BiLogOutCircle color="white" size={100} />
           <h3>Izlogujte se</h3>
         </div>
       </div>
