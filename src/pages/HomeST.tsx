@@ -7,7 +7,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { NewSSOverlay } from "../components/NewSSOverlay";
 import { AppContext } from "../functions/AppProvider";
 import { NewQuizOverlay } from "../components/NewQuizOverlay";
-
+import { useNavigate } from "react-router";
 interface Props {}
 export const quiz = {
   quizTitle: "React Quiz Component Demo",
@@ -115,13 +115,13 @@ export function HomeST(props: Props) {
   const [isNewQuiz, setIsNewQuiz] = useState<boolean>(false);
   const date = new Date();
   const mesec = date.getMonth() + 1;
-
-  const { currentUser, currentUserData } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { currentUser } = useContext(AppContext);
 
   return (
     <>
       <div className="welcome">
-        <h2>Dobro došli, {currentUserData && currentUserData?.uloga}</h2>
+        <h2>Dobro došli, {currentUser && currentUser?.ime}</h2>
         <h2>
           {date.getDate()}.{mesec}.{date.getFullYear()}
         </h2>
@@ -135,9 +135,13 @@ export function HomeST(props: Props) {
           <BsFillPersonPlusFill color="white" size={100} />
           <h3>Dodajte novog učenika</h3>
         </div>
-        <div className="option" onClick={() => setIsNewQuiz(true)}>
+        <div className="option" onClick={() => navigate("/newQuiz")}>
           <GiBookshelf color="white" size={100} />
           <h3>Napravite novi kviz</h3>
+        </div>
+        <div className="option" onClick={() => navigate("/allQuizs")}>
+          <GiBookshelf color="white" size={100} />
+          <h3>Svi kvizovi</h3>
         </div>
       </div>
       {isNewSS && <NewSSOverlay setIsNewSS={setIsNewSS} />}

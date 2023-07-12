@@ -19,6 +19,9 @@ import { HomeST } from "./pages/HomeST";
 import { Login } from "./pages/Login";
 import { SchoolsList } from "./pages/SchoolsList";
 import "./styles/app.scss";
+import NewQuiz from "./pages/NewQuiz";
+import QuizList from "./pages/QuizList";
+import QuizPage from "./pages/Quiz";
 
 function App() {
   const [probni, setProbni] = useState<String>("");
@@ -61,6 +64,36 @@ function App() {
             element={
               currentUser !== null ? (
                 <SchoolsList />
+              ) : (
+                <Navigate to={{ pathname: "/" }} />
+              )
+            }
+          />
+          <Route
+            path="/newQuiz"
+            element={
+              currentUser !== null ? (
+                <NewQuiz />
+              ) : (
+                <Navigate to={{ pathname: "/" }} />
+              )
+            }
+          />
+          <Route
+            path="/allQuizs"
+            element={
+              currentUser !== null ? (
+                <QuizList />
+              ) : (
+                <Navigate to={{ pathname: "/" }} />
+              )
+            }
+          />
+          <Route
+            path="/quiz/:kvizId"
+            element={
+              currentUser !== null ? (
+                <QuizPage />
               ) : (
                 <Navigate to={{ pathname: "/" }} />
               )
