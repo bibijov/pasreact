@@ -19,7 +19,6 @@ export function NewUserOverlay(props: Props) {
   const [role, setRole] = useState<string>("schoolAdmin");
   const [ime, setIme] = useState<string>("");
   const [skolaID, setSkolaID] = useState<string>("");
-  // const auth = getAuth();
   useEffect(() => {
     axios.get("http://localhost:8000/api/v1/autoskolas").then((response) => {
       console.log(response.data.data);
